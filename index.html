@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- hi -->
+    <!-- Favicon -->
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#060000">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="//cdn.muicss.com/mui-0.10.3/css/mui.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://kit.fontawesome.com/1c212643ff.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <title>Ryley Ziegler</title>
+    <style>
+        body {
+            /* font-family: Arial, sans-serif; */
+            /* background-color: #060000; */
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* height: 100vh; */
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+            position: relative;
+        }
+
+        .section-1,
+        .section-2 {
+            width: 50%;
+            padding: 20px;
+            box-sizing: border-box;
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        }
+
+        .section-1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 100%;
+        }
+
+        .section-2 {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateX(100%) translateY(-50%);
+            display: none;
+            overflow: auto;
+            background-color: #1a1b1d;
+        }
+
+        .link-container {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            /* margin-top: 20px; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #middle-circle {
+            position: absolute;
+            z-index: 1;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .link-container a {
+            position: absolute;
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+            transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 0;
+            opacity: 0;
+            pointer-events: none;
+            /* Disable pointer events initially */
+        }
+
+        .link-container a.show {
+            opacity: 1;
+            pointer-events: auto;
+            /* Enable pointer events when visible */
+        }
+
+
+        .link-container a:nth-child(2) {
+            transform: rotate(-90deg) translate(150px) rotate(90deg);
+        }
+
+        .link-container a:nth-child(3) {
+            transform: rotate(-120deg) translate(150px) rotate(120deg);
+        }
+
+        .link-container a:nth-child(4) {
+            transform: rotate(-150deg) translate(150px) rotate(150deg);
+        }
+
+        .link-container a:nth-child(5) {
+            transform: rotate(-180deg) translate(150px) rotate(180deg);
+        }
+
+        .link-container a:nth-child(6) {
+            transform: rotate(-210deg) translate(150px) rotate(210deg);
+        }
+
+        .link-container a:nth-child(7) {
+            transform: rotate(-240deg) translate(150px) rotate(240deg);
+        }
+
+        .link-container a:nth-child(8) {
+            transform: rotate(-270deg) translate(150px) rotate(270deg);
+        }
+
+        .show-section-2 .section-1 {
+            left: 50%;
+            transform: translateX(-100%) translateY(-50%);
+        }
+
+        .show-section-2 .section-2 {
+            display: block;
+            transform: translateX(0) translateY(-50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="container">
+        <div class="section-1" onclick="resetSections(event)">
+            <div class="link-container">
+                <div id="middle-circle" onclick="toggleIcons(event)">
+                    <img src="img/r-transparent-center.png" width="125" height="84" />
+                    <h2>Ryley Ziegler</h2>
+                    <p>Hampstead, MD</p>
+                </div>
+                <a href="https://www.linkedin.com/in/ryley-ziegler-3a9b98210/" onclick="event.stopPropagation();"><i
+                        class="fab fa-linkedin fa-fw"></i></a>
+                <a href="https://github.com/rtziegl" onclick="event.stopPropagation();"><i
+                        class="fab fa-github fa-fw"></i></a>
+                <a href="ryleyziegler.pdf" target="_blank" onclick="event.stopPropagation();"><i
+                        class="fa-solid fa-user-tie fa-fw"></i></a>
+                <a onclick="toggleFormButton(); event.stopPropagation();"><i class="fa fa-envelope fa-fw"
+                        id="toggleForm"></i></a>
+                <a href="#" onclick="showSection('about'); event.stopPropagation();"><i
+                        class="fa-solid fa-circle-info fa-fw"></i></a>
+                <a href="#" onclick="showSection('projects'); event.stopPropagation();"><i
+                        class="fas fa-laptop-code fa-fw"></i></a>
+                <a href="#" onclick="showSection('beats'); event.stopPropagation();"><i
+                        class="fa-solid fa-headphones fa-fw"></i></a>
+            </div>
+            <div class="overlay" id="overlay" style="visibility: hidden;"></div>
+            <div class="form-container" id="myForm" style="visibility: hidden;">
+                <?php include 'form.php'; ?>
+            </div>
+        </div>
+        <div class="section-2" id="about">
+            <h2>About</h2>
+            <p>
+                I am a full-stack programmer who excels in finding cost-effective, intuitive solutions to complex problems without compromising application performance. As a recent graduate still navigating the computer science world, I have developed a high level of adaptability and confidence in my ability to tackle any task that comes my way. My journey has made me resourceful and resilient, qualities that I bring to every project I undertake.
+            </p>
+        </div>
+        <div class="section-2" id="projects">
+            <h2>Projects</h2>
+            <h4>Below are some of my projects:</h4>
+            <ul class="computer">
+                <li><u><a href="https://github.com/rtziegl/wavpool">wavpool</a></u></li>
+                <li><u><a href="https://github.com/rtziegl/Pacman">Pacman</a></u></li>
+                <li><u><a href="https://github.com/rtziegl/blackjack-extension">blackjack-extension</a></u></li>
+            </ul>
+            <ul class="phone">
+                <li><u><a href="https://github.com/rtziegl/bit-clicker">bit-clicker</a></u></li>
+            </ul>
+        </div>
+        <div class="section-2" id="beats">
+            <h2>Beats</h2>
+            <iframe width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay"
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1108435963&color=%23101214&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+            <div
+                style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
+                <a href="https://soundcloud.com/ryleyz" title="z" target="_blank"
+                    style="color: #cccccc; text-decoration: none;"></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            var container = document.getElementById('container');
+            var sections = document.querySelectorAll('.section-2');
+            sections.forEach(function (section) {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'flex';
+
+            setTimeout(function () {
+                container.classList.add('show-section-2');
+            }, 50);
+        }
+
+        function resetSections(event) {
+            if (!event.target.closest('.link-container a')) {
+                var container = document.getElementById('container');
+                container.classList.remove('show-section-2');
+
+                setTimeout(function () {
+                    var sections = document.querySelectorAll('.section-2');
+                    sections.forEach(function (section) {
+                        section.style.display = 'none';
+                    });
+                }, 500);
+            }
+        }
+
+        function toggleIcons(event) {
+            event.stopPropagation();
+            var icons = document.querySelectorAll('.link-container a');
+            var delay = 0;
+
+            if (icons[0].classList.contains('show')) {
+                for (let i = icons.length - 1; i >= 0; i--) {
+                    setTimeout(() => {
+                        icons[i].classList.remove('show');
+                    }, delay);
+                    delay += 50;
+                }
+            } else {
+                icons.forEach((icon, index) => {
+                    setTimeout(() => {
+                        icon.classList.add('show');
+                    }, delay);
+                    delay += 50;
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>
