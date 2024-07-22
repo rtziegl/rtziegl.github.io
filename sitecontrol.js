@@ -53,3 +53,33 @@ document.addEventListener("DOMContentLoaded", function () {
         icon.addEventListener('click', resetSections);
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const middleCircle = document.getElementById('middle-circle');
+    const linkContainers = document.querySelectorAll('.link-container a');
+
+    function isAnyLinkVisible() {
+        // Check if any link has the 'show' class
+        return Array.from(linkContainers).some(link => 
+            link.classList.contains('show')
+        );
+    }
+
+    function triggerBounce() {
+        if (!isAnyLinkVisible()) {
+            console.log('Triggering bounce');
+            middleCircle.classList.add('bounce-once');
+            // Remove the class after the animation ends to reset the bounce
+            setTimeout(() => {
+                middleCircle.classList.remove('bounce-once');
+            }, 1000); // Match this with the animation duration (1s)
+        }
+    }
+
+    // Trigger bounce every 10 seconds if no links are visible
+    setInterval(() => {
+        if (!isAnyLinkVisible()) {
+            triggerBounce();
+        }
+    }, 10000); // 10 seconds
+});
