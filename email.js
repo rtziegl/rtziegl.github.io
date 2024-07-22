@@ -1,4 +1,4 @@
-document.getElementById('contact-form').addEventListener('submit', function (event) {
+document.getElementById('contact-form').addEventListener('submit', function(event) {
     event.preventDefault();
 
     const email = document.getElementById('email').value;
@@ -12,17 +12,16 @@ document.getElementById('contact-form').addEventListener('submit', function (eve
         },
         body: JSON.stringify({ email, subject, message }),
     })
-        .then(response => response.json())
-        .then(data => {
-            if (data.message === "Email sent successfully") {
-                alert("Email sent successfully!");
-            } else {
-                alert("Failed to send email.");
-            }
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-            alert("An error occurred. Please try again.");
-        });
+    .then(response => response.json())
+    .then(data => {
+        if (data.message === "Email sent successfully") {
+            alert("Email sent successfully!");
+        } else {
+            alert("Failed to send email.");
+        }
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+        alert("An error occurred. Please try again.");
+    });
 });
-
