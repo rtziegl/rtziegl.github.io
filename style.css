@@ -238,3 +238,20 @@ button{
     height: 50px;
     color: white;
 }
+
+/* Minimize Icon */
+.section-2 .fa-window-minimize {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #fff;
+}
+
+/* Media Query for iPad Screen Size and Smaller */
+@media (max-width: 768px) {
+    .section-2 {
+        width: 100%;
+    }
+}
